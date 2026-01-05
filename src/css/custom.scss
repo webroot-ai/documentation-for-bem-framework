@@ -125,7 +125,12 @@ p {
 .pagination__list {
   align-items: baseline;
 }
-.badge--primary {
+.badge--primary,
+.badge--secondary,
+.badge--success,
+.badge--error,
+.badge--warning,
+.badge--info {
   --ifm-badge-background-color: unset;
   --ifm-badge-border-color: unset;
 }
