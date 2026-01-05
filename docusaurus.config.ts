@@ -55,6 +55,30 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
+    metadata: [
+      { name: "algolia-site-verification", content: "760A862303B523E8" },
+    ],
+    algolia: {
+      // The application ID provided by Algolia
+      appId: "17S5U9Z7JL",
+
+      // Public API key: it is safe to commit it~
+      apiKey: "359ae6aa1b8554bacb18d14f26980aef",
+
+      indexName: "scss-docs",
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: "external\\.com|domain\\.com",
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      replaceSearchResultPathname: {
+        from: "/docs/", // or as RegExp: /\/docs\//
+        to: "/",
+      },
+    },
     image: "img/webroot-logo.svg",
     colorMode: {
       respectPrefersColorScheme: true,
