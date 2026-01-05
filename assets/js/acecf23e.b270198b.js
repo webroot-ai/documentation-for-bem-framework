@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkcss_documentation_webroot=globalThis.webpackChunkcss_documentation_webroot||[]).push([[903],{1912:o=>{o.exports=JSON.parse('{"blogBasePath":"/documentation-for-bem-framework/blog","blogTitle":"Blog","authorsListPath":"/documentation-for-bem-framework/blog/authors"}')}}]);
