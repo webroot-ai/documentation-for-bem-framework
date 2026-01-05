@@ -115,3 +115,17 @@ p {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border-color: #334155;
 }
+
+.navbar {
+  height: unset;
+  position: unset;
+}
+
+.breadcrumb__list,
+.pagination__list {
+  align-items: baseline;
+}
+.badge--primary {
+  --ifm-badge-background-color: unset;
+  --ifm-badge-border-color: unset;
+}
