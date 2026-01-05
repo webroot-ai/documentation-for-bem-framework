@@ -129,3 +129,7 @@ p {
   --ifm-badge-background-color: unset;
   --ifm-badge-border-color: unset;
 }
+
+.badge p {
+  margin: unset;
+}
