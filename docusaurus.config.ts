@@ -56,7 +56,7 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     metadata: [
-      { name: "algolia-site-verification", content: "760A862303B523E8" },
+      { name: "algolia-site-verification", content: "8E5509C1E84DB862" },
     ],
     algolia: {
       // The application ID provided by Algolia
