@@ -73,7 +73,7 @@ const config: Config = {
       // Public API key: it is safe to commit it~
       apiKey: "f4c905a2128013a3c890672fbaabab3a",
 
-      indexName: "scss-docs",
+      indexName: "crawler_SCSS-docs",
 
       // Optional: see doc section below
       contextualSearch: true,
