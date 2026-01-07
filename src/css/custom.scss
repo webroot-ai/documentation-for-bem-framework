@@ -121,6 +121,10 @@ p {
   position: unset;
 }
 
+.navbar .navbar__logo {
+  height: unset;
+}
+
 .breadcrumb__list,
 .pagination__list {
   align-items: baseline;
