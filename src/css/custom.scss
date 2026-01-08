@@ -74,6 +74,10 @@ p {
   background: unset;
 }
 
+.card {
+  transition: all 0.2s ease;
+}
+
 .breadcrumbs__link {
   font-size: unset;
 }
