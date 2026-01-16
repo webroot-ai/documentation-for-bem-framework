@@ -6,6 +6,9 @@
 // Import the BEM SCSS Framework (docs version - excludes reset/typography)
 @use "../../bem-scss-framework/scss/main-docs";
 
+// Import IcoMoon icons with corrected paths for Docusaurus
+@use "icons";
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
