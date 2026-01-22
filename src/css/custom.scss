@@ -154,3 +154,12 @@ p {
 .badge p {
   margin: unset;
 }
+
+button p{
+  margin-bottom: unset;
+}
+
+.demo-buttons{
+  display: flex;
+  gap: 0.5rem;
+}

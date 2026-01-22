@@ -2,6 +2,83 @@
 sidebar_label: "Toast"
 ---
 
+export const showToast = (type) => {
+  if (typeof document !== 'undefined') {
+    const container = document.querySelector('.toast-container--top-right') || createContainer('top-right');
+    const toast = document.createElement('div');
+    toast.className = `toast toast--${type}`;
+    toast.innerHTML = `
+      <span class="toast__icon"><i class="icon-info"></i></span>
+      <div class="toast__content">
+        <h4 class="toast__title">${type.charAt(0).toUpperCase() + type.slice(1)}</h4>
+        <p class="toast__description">This is a ${type} notification.</p>
+      </div>
+      <button class="toast__close" aria-label="Close notification">×</button>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 5000);
+    toast.querySelector('.toast__close').onclick = () => toast.remove();
+  }
+};
+
+export const showToastPosition = (position) => {
+  if (typeof document !== 'undefined') {
+    const container = document.querySelector(`.toast-container--${position}`) || createContainer(position);
+    const toast = document.createElement('div');
+    toast.className = 'toast toast--info';
+    toast.innerHTML = `
+      <div class="toast__content">
+        <h4 class="toast__title">Position: ${position}</h4>
+        <p class="toast__description">Toast in ${position} corner.</p>
+      </div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+};
+
+export const showToastWithProgress = () => {
+  if (typeof document !== 'undefined') {
+    const container = document.querySelector('.toast-container--top-right') || createContainer('top-right');
+    const toast = document.createElement('div');
+    toast.className = 'toast toast--success';
+    toast.innerHTML = `
+      <div class="toast__content">
+        <h4 class="toast__title">Progress Bar</h4>
+        <p class="toast__description">Auto-dismissing in 5s...</p>
+      </div>
+      <div class="toast__progress" style="animation: toast-progress 5s linear forwards"></div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 5000);
+  }
+};
+
+export const showToastSize = (size) => {
+  if (typeof document !== 'undefined') {
+    const container = document.querySelector('.toast-container--top-right') || createContainer('top-right');
+    const toast = document.createElement('div');
+    toast.className = `toast toast--${size} toast--info`;
+    toast.innerHTML = `
+      <div class="toast__content">
+        <h4 class="toast__title">${size === 'default' ? 'Default' : size.toUpperCase()} Size</h4>
+        <p class="toast__description">This is a ${size} toast.</p>
+      </div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+};
+
+export const createContainer = (position) => {
+  if (typeof document !== 'undefined') {
+    const container = document.createElement('div');
+    container.className = `toast-container toast-container--${position}`;
+    document.body.appendChild(container);
+    return container;
+  }
+};
+
 # Toast
 
 Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They are temporary, non-critical notifications that appear in the corner of the screen.
@@ -72,6 +149,15 @@ Toast notifications come in four variants to communicate different types of mess
   </div>
 </div>
 
+<div className="component-preview component-preview--center">
+  <div className="demo-buttons">
+    <button className="button button--primary" onClick={() => showToast('info')}>Show Info Toast</button>
+    <button className="button button--success" onClick={() => showToast('success')}>Show Success Toast</button>
+    <button className="button button--warning" onClick={() => showToast('warning')}>Show Warning Toast</button>
+    <button className="button button--danger" onClick={() => showToast('error')}>Show Error Toast</button>
+  </div>
+</div>
+
 ```html
 <!-- Info Toast -->
 <div class="toast toast--info">
@@ -125,6 +211,17 @@ Toasts can be positioned in six different locations on the screen using position
 - `.toast--bottom-left`
 - `.toast--bottom-center`
 
+<div className="component-preview component-preview--center">
+  <div className="demo-buttons">
+    <button className="button button--primary" onClick={() => showToastPosition('top-right')}>Top Right</button>
+    <button className="button button--primary" onClick={() => showToastPosition('top-left')}>Top Left</button>
+    <button className="button button--primary" onClick={() => showToastPosition('top-center')}>Top Center</button>
+    <button className="button button--primary" onClick={() => showToastPosition('bottom-right')}>Bottom Right</button>
+    <button className="button button--primary" onClick={() => showToastPosition('bottom-left')}>Bottom Left</button>
+    <button className="button button--primary" onClick={() => showToastPosition('bottom-center')}>Bottom Center</button>
+  </div>
+</div>
+
 ```html
 <!-- Top Right (default) -->
 <div class="toast toast--top-right">...</div>
@@ -173,6 +270,12 @@ Add a progress bar to visually indicate the time until auto-dismiss:
   </div>
 </div>
 
+<div className="component-preview component-preview--center">
+  <button className="button button--primary" onClick={() => showToastWithProgress()}>
+    Show Toast with Progress
+  </button>
+</div>
+
 ```html
 <div class="toast toast--success">
   <span class="toast__icon icon-checkmark-circle"></span>
@@ -202,6 +305,10 @@ Toasts are available in three sizes: small, default, and large.
   </div>
 </div>
 
+<div className="component-preview component-preview--center">
+  <button className="button button--primary" onClick={() => showToastSize('sm')}>Small Toast</button>
+</div>
+
 ```html
 <div class="toast toast--sm">...</div>
 ```
@@ -219,6 +326,10 @@ Toasts are available in three sizes: small, default, and large.
   </div>
 </div>
 
+<div className="component-preview component-preview--center">
+  <button className="button button--primary" onClick={() => showToastSize('default')}>Default Toast</button>
+</div>
+
 ```html
 <div class="toast">...</div>
 ```
@@ -234,6 +345,10 @@ Toasts are available in three sizes: small, default, and large.
     </div>
     <button className="toast__close" aria-label="Close notification">×</button>
   </div>
+</div>
+
+<div className="component-preview component-preview--center">
+  <button className="button button--primary" onClick={() => showToastSize('lg')}>Large Toast</button>
 </div>
 
 ```html
@@ -299,3 +414,51 @@ Toasts are available in three sizes: small, default, and large.
 - `.toast__description` - Toast message
 - `.toast__close` - Close button
 - `.toast__progress` - Progress bar for auto-dismiss
+
+## Inline Alerts
+
+Compact alerts that can be placed inline with content.
+
+```html
+<div class="alert alert--success alert--inline alert--with-icon">
+  <span class="alert__icon icon-checkmark"></span>
+  <div class="alert__content">Saved!</div>
+</div>
+```
+
+## JavaScript Integration
+
+The toast component can be managed using the `Toast` class.
+
+### Class Implementation
+
+```javascript
+import { Toast } from './components/toast.js';
+
+// Initialize any existing toasts
+Toast.initAll();
+
+// Show a toast programmatically
+Toast.show({
+  message: 'Your profile has been updated.',
+  type: 'success',
+  duration: 5000,
+  position: 'top-right'
+});
+
+// Shorthand methods
+Toast.success('Saved successfully!');
+Toast.error('An error occurred.');
+Toast.warning('Check your input.');
+Toast.info('New message received.');
+```
+
+### Options
+
+| Option     | Type     | Default      | Description                                     |
+| :--------- | :------- | :----------- | :---------------------------------------------- |
+| `message`  | `string` | -            | The message to display                          |
+| `type`     | `string` | `'info'`     | `success`, `error`, `warning`, `info`           |
+| `duration` | `number` | `5000`       | Time in ms before auto-dismiss (0 to disable)   |
+| `position` | `string` | `'top-right'`| `top-right`, `top-left`, `bottom-right`, etc. |
+
